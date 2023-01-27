@@ -58,31 +58,35 @@
 	let emailTemplates = requests.get('/templates', {});
 
 	const placeholders = [
-			{
-				re: 'employee',
-				description: 'Name of the employee this appointment was scheduled with.',
-			},
-			{
-				re: 'date',
-				description: 'The scheduled appointment date.',
-			},
-			{
-				re: 'time',
-				description: 'The scheduled appointment time.',
-			},
-			{
-				re: 'cancel',
-				description: 'The cancellation link for the appointment.',
-			},
-			{
-				re: 'name',
-				description: 'The customer\'s name.',
-			},
-			{
-				re: 'phone',
-				description: 'The customer\'s phone number.',
-			},
-		];
+		{
+			re: 'employee',
+			description: 'Name of the employee this appointment was scheduled with.',
+		},
+		{
+			re: 'type',
+			description: 'The name of the appointment type.',
+		},
+		{
+			re: 'date',
+			description: 'The scheduled appointment date.',
+		},
+		{
+			re: 'time',
+			description: 'The scheduled appointment time.',
+		},
+		{
+			re: 'cancel',
+			description: 'The cancellation link for the appointment.',
+		},
+		{
+			re: 'name',
+			description: 'The customer\'s name.',
+		},
+		{
+			re: 'phone',
+			description: 'The customer\'s phone number.',
+		},
+	];
 
 	/**
 	 * @param { Promise<any> } appointments
