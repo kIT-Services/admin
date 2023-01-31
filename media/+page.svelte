@@ -40,7 +40,7 @@
 
 	async function copyPermalink() {
 		try {
-			const permalink = `${requests.api}/media/${selectedFile?.id}`;
+			const permalink = `${requests.getApi()}/media/${selectedFile?.id}`;
 			await navigator.clipboard.writeText(permalink);
 			alert(`Copied ${permalink} to the clipboard.`); // I'm being lazy.
 		} catch(e) {
@@ -100,9 +100,9 @@
 		<section class="preview">
 			{#if selectedFile}
 				{#if selectedFile.content_type.startsWith('image/')}
-					<img alt="File preview" src={ `${requests.api}/media/${selectedFile.id}` } />
+					<img alt="File preview" src={ `${requests.getApi()}/media/${selectedFile.id}` } />
 				{:else if selectedFile.content_type.startsWith('text/')}
-					{#await fetch(`${requests.api}/media/${selectedFile.id}`)}
+					{#await fetch(`${requests.getApi()}/media/${selectedFile.id}`)}
 						<Spinner position="static" />
 					{:then req}
 						{#await req.text()}
