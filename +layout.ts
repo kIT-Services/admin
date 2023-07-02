@@ -3,7 +3,7 @@ import { redirect } from '@sveltejs/kit';
 import * as requests from '$lib/requests';
 
 export async function load() {
-	if(!browser || window.location.pathname == '/admin/login') return;
+	if(!browser || !window.location.pathname.startsWith('/admin') || window.location.pathname == '/admin/login') return;
 
 	const adminSession = localStorage.getItem('admin-session-id');
 	if(!adminSession) throw redirect(307, '/admin/login');
