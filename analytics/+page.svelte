@@ -48,6 +48,12 @@
 		return `${date.getFullYear()}-${(date.getMonth() + 1).toString().padStart(2, '0')}-${date.getDate().toString().padStart(2, '0')}`;
 	}
 
+	/** @param { number } days */
+	function setTimeRange(days) {
+		const startTs = Date.now() - days * 86_400_000;
+		start = toSqlDate(new Date(startTs));
+	}
+
 	/**
 	 * @param { number } previous
 	 * @param { { value: string } } current
@@ -143,6 +149,13 @@
 {#await data}
 	<Spinner />
 {:then resolved}
+	<section>
+		<button on:click={() => setTimeRange(1)}>Past Day</button>
+		<button on:click={() => setTimeRange(7)}>Past Week</button>
+		<button on:click={() => setTimeRange(30)}>Past 30 Days</button>
+		<button on:click={() => setTimeRange(365)}>Past Year</button>
+		<button on:click={() => setTimeRange(1826)}>Past 5 Years</button>
+	</section>
 	<section>
 		<h3>Summary</h3>
 		<div>
